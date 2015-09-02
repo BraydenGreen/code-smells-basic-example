@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @owner.first_name -%> <%= @owner.last_name %>'s Page</h2>
 
-<%= link_to 'Edit', edit_owner_path(@owner) %> |
-<%= link_to 'Back', owners_path %>
+<h1>Here are your cats.</h1>
+<%= @owner.cats.each do |c| %>
+    <%= c.name %>
+    <% end %>
+
+<br>
+<br>
+
+<%= link_to 'Click here to add a cat to this collection:', new_cat_path %>
+
+<br>
+<br>
+<%= link_to 'Go Back' , owners_path %>
+<%= link_to 'Edit This User' , edit_owner_path %>
