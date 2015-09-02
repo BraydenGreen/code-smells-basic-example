@@ -9,12 +9,15 @@ class OwnersController < ApplicationController
   end
 
   def update
-    @owner = Owner.find_by(id: params[:id])
+    @owner = Owner.find(params[:id])
+
     if @owner.update(owner_params)
-      # redirect_to owners_path, success: "Owner with name #{params[:owner][:first_name]} #{params[:owner][:last_name]} was updated successfully"
+      flash[:success] = "Owner with name #{params[:owner][:first_name]} #{params[:owner][:last_name]} was updated successfully"
+      redirect_to cats_path
+
     else
-      flash[:error] = "Owner with name #{params[:owner][:first_name]} #{params[:owner][:last_name]} was not created successfully"
-      # render 'edit'
+      flash[:error] = "Owner with name #{params[:owner][:first_neme]} #{params[:owner][:last_name]} was not created successfully"
+      render :edit      
     end
   end
 
@@ -23,16 +26,15 @@ class OwnersController < ApplicationController
   end
 
   def create
-    @owner = Owner.new(owner_perams)
+    @owner = Owner.new(owner_params)
     if @owner.save
-      redirect_to owners_path, success: "Owner with name #{params[:owner][:first_name]} #{params[:owner][:last_name]} was created successfully"
     else
       redirect_to owners_path, success: "Owner with name #{params[:owner][:first_neme]} #{params[:owner][:last_name]} was not created successfully"
     end
   end
   
   def edit
-    @owner = Owner.find_by(name: params[:name])
+    @owner = Owner.find_by(id: params[:id])
   end
 
   def destroy
@@ -40,9 +42,8 @@ class OwnersController < ApplicationController
     message = nil
     success_message = ""
     error_message = ''
-    @owner = Owner.find(r)
-    if @owner && @owner.persisted? && p
-      #destroy all my cats
+    @owner = Owner.find(params[:id])
+    if 
       @owner.cats.each do |cat|
         cat.destroy
       end
