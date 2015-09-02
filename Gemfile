@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -43,6 +43,4 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
 end
-
-gem 'this_is_not_a_real_Gem '
 
