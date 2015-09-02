@@ -13,6 +13,7 @@ class OwnersController < ApplicationController
     @owner = Owner.find(params[:id])
 
     if @owner.update(owner_params)
+
       flash[:success] = "#{params[:owner][:first_name]} #{params[:owner][:last_name]} was updated successfully"
       redirect_to owners_path
     else

@@ -1,6 +1,17 @@
 <h1>Edit Owner</h1>
+<%= form_for(@owner) do |f| %>
+       
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name%>
+
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name%>
+
+
+    <%= f.submit %>
+<% end %>
+
 
 <%= render 'owners/form' %>
 
-<%= link_to 'Show', owners_path %>
 <%= link_to 'Back', owners_path %>

@@ -1,5 +1,6 @@
 <h2><%= @owner.first_name -%> <%= @owner.last_name %>'s Page</h2>
 
+
 <h1>Here are your cats.</h1>
 <%= @owner.cats.each do |c| %>
     <%= c.name %>

@@ -56,6 +56,15 @@ class CatsController < ApplicationController
       render :new
     end
   end
+  
+  def create_a_cat(owner, cat_name, a, cat_fur_color, ec, food_type)
+    cat = Cat.new(name: cat_name, age: a, fur_color: cat_fur_color, eye_color: ec, food_type: food_type)
+    if cat && cat.valid?
+      owner.cats << cat
+    else
+      puts "cat not valid"
+    end
+  end
 
   private
     
