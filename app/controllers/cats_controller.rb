@@ -3,7 +3,6 @@ class CatsController < ApplicationController
     @cats = []
     Cats.each do |cat|
       cats << cat
-    end
   end
 
   def show
@@ -17,6 +16,7 @@ class CatsController < ApplicationController
 
   def update
     @cat = Cat.find(params[:id])
+
     if @cat.update(cat_params)
       flash[:success] = "cat with id: #{params[:id]} updated"
       redirect_to cats_path
@@ -33,12 +33,11 @@ class CatsController < ApplicationController
   def destory
     cat_id = params[:id]
     @cat = Cat.find(params[:id])
-    if @cat
+    
       if @cat.destroy
         flash[:success] = "cat destroyed"
       end
-    end
-    @cat.id
+   
   end
 
   def create
