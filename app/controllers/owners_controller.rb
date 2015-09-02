@@ -1,12 +1,11 @@
 class OwnersController < ApplicationController
   def index
-    @o = Owners.all.sort_by{|onr| onr.first_name }
+    @owners = Owner.all.sort_by{|onr| onr.first_name }
   end
 
   def show
-    @onr = nil
-    @onr = Owner.find(params[:id])
-    return @onr if @onr
+    @owner = nil
+    @owner = Owner.find(params[:id])
   end
 
   def update
@@ -41,13 +40,13 @@ class OwnersController < ApplicationController
     message = nil
     success_message = ""
     error_message = ''
-    @onr = Owner.find(r)
-    if @onr && @onr.persisted? && p
+    @owner = Owner.find(r)
+    if @owner && @owner.persisted? && p
       #destroy all my cats
-      @onr.cats.each do |cat|
+      @owner.cats.each do |cat|
         cat.destroy
       end
-      if @onr.destroy
+      if @owner.destroy
         success_message = "owner destroyed" 
         flash[:success] = success_message
         redirect_to owners_path
@@ -63,7 +62,7 @@ class OwnersController < ApplicationController
   def some_method_that_does_something(owner)
     cats = owner.cats
     cat = owner.cats.first
-    cat.age = 22
+    cat.age = 23
     cat.save
   end
 
@@ -77,7 +76,7 @@ class OwnersController < ApplicationController
   end
 
   private
-    def op
+    def owner_params
       if params[:owner]
         params.require(:owner).permit(:first_name, :last_name, :age, :race, :location)
       end
