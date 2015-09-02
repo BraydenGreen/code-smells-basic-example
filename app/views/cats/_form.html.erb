@@ -2,7 +2,17 @@
   <% if @cat.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being saved:</h2>
+      <% else %>
+        <%= <h1> Enter a new owner </h1> %>
+        <%= form_for @owner do |f| %>
+        First Name: <%= f.label :first_name %>
+        <%= f.text_field :first_name%>
 
+        Last Name: <%= f.label :last_name %>
+        <%= f.text_field :last_name%>
+
+  <%= f.submit %>
+<% end %>
       <ul>
       <% @cat.errors.full_messages.each do |message| %>
         <li><%= message %></li>

@@ -12,9 +12,11 @@
   <tbody>
     <% @owners.each do |owner| %>
       <tr>
-        <td><%= link_to 'Show', owner %></td>
+        <td><%= owner.first_name %></td>
+        <td><%= owner.last_name %></td>        
+        <td><%= link_to 'Show', owner_path(owner) %></td>
         <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
-        <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', owner_path(owner), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
